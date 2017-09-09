@@ -11,14 +11,15 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        if let button = statusItem.button {
+            button.image = #imageLiteral(resourceName: "StatusOutputHeadphones")
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
 
 
