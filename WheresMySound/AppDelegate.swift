@@ -17,6 +17,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             button.image = #imageLiteral(resourceName: "StatusOutputHeadphones")
         }
+
+        self.buildMenu()
+    }
+
+    func buildMenu() {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Quit Where's My Sound",
+                                action: #selector(NSApplication.terminate(_:)),
+                                keyEquivalent: "q"))
+
+        statusItem.menu = menu
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
