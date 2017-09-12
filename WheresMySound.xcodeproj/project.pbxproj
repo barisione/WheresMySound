@@ -11,6 +11,8 @@
 		4195737F1F648260007E71AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195737E1F648260007E71AD /* ViewController.swift */; };
 		419573811F648260007E71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419573801F648260007E71AD /* Assets.xcassets */; };
 		419573841F648260007E71AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419573821F648260007E71AD /* Main.storyboard */; };
+		4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195738B1F653770007E71AD /* SoundDeviceWatcher.swift */; };
+		41A4AAFB1F66BDE900D201E3 /* ListenerHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4AAFA1F66BDE900D201E3 /* ListenerHack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,10 @@
 		419573801F648260007E71AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		419573831F648260007E71AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		419573851F648260007E71AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4195738B1F653770007E71AD /* SoundDeviceWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundDeviceWatcher.swift; sourceTree = "<group>"; };
+		41A4AAF91F66BDE900D201E3 /* WheresMySound-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WheresMySound-Bridging-Header.h"; sourceTree = "<group>"; };
+		41A4AAFA1F66BDE900D201E3 /* ListenerHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerHack.m; sourceTree = "<group>"; };
+		41A4AAFC1F66BE0800D201E3 /* ListenerHack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListenerHack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,10 @@
 				419573801F648260007E71AD /* Assets.xcassets */,
 				419573821F648260007E71AD /* Main.storyboard */,
 				419573851F648260007E71AD /* Info.plist */,
+				4195738B1F653770007E71AD /* SoundDeviceWatcher.swift */,
+				41A4AAFA1F66BDE900D201E3 /* ListenerHack.m */,
+				41A4AAFC1F66BE0800D201E3 /* ListenerHack.h */,
+				41A4AAF91F66BDE900D201E3 /* WheresMySound-Bridging-Header.h */,
 			);
 			path = WheresMySound;
 			sourceTree = "<group>";
@@ -94,6 +104,7 @@
 					419573781F648260007E71AD = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = ZMH85PTZ89;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -133,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */,
 				4195737F1F648260007E71AD /* ViewController.swift in Sources */,
 				4195737D1F648260007E71AD /* AppDelegate.swift in Sources */,
+				41A4AAFB1F66BDE900D201E3 /* ListenerHack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,12 +261,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZMH85PTZ89;
 				INFOPLIST_FILE = WheresMySound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.barisione.WheresMySound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WheresMySound/WheresMySound-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -262,12 +278,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZMH85PTZ89;
 				INFOPLIST_FILE = WheresMySound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.barisione.WheresMySound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WheresMySound/WheresMySound-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -291,6 +309,7 @@
 				4195738A1F648260007E71AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

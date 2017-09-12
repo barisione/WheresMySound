@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    var watcher = SoundDeviceWatcher()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
@@ -19,6 +20,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         self.buildMenu()
+
+        self.watcher.startListening(watcherCallback: self.outputSourceChanged)
+    }
+
+    func applicationWillTerminate(_ aNotification: Notification) {
+        self.watcher.stopListening()
     }
 
     func buildMenu() {
@@ -30,9 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = menu
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func outputSourceChanged(deviceType: AudioDeviceType) {
+        print("Sound coming from \(deviceType)")
     }
-
-
 }
-
