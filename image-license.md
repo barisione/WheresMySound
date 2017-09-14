@@ -1,6 +1,12 @@
 Image license
 =============
 
+App icon
+--------
+* **Creator:** Svengraph
+* **Source:** [SoftIcons.com](http://www.softicons.com/web-icons/i-love-icons-by-svengraph/headphones-icon)
+* **License:** [Creative Commons Attribution 3.0 Unported](https://creativecommons.org/licenses/by/3.0/)
+
 
 Output source icons
 -------------------
