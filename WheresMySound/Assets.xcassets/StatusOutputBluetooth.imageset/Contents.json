@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "StatusOutputHeadphones.png",
+      "filename" : "StatusOutputBluetooth.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "StatusOutputHeadphones@2x.png",
+      "filename" : "StatusOutputBluetooth@2x.png",
       "scale" : "2x"
     },
     {

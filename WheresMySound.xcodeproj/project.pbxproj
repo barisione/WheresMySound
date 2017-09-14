@@ -58,9 +58,9 @@
 		4195737B1F648260007E71AD /* WheresMySound */ = {
 			isa = PBXGroup;
 			children = (
+				419573801F648260007E71AD /* Assets.xcassets */,
 				4195737C1F648260007E71AD /* AppDelegate.swift */,
 				4195737E1F648260007E71AD /* ViewController.swift */,
-				419573801F648260007E71AD /* Assets.xcassets */,
 				419573821F648260007E71AD /* Main.storyboard */,
 				419573851F648260007E71AD /* Info.plist */,
 				4195738B1F653770007E71AD /* SoundDeviceWatcher.swift */,

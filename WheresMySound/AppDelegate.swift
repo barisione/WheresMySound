@@ -15,10 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var watcher = SoundDeviceWatcher()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        if let button = statusItem.button {
-            button.image = #imageLiteral(resourceName: "StatusOutputHeadphones")
-        }
-
         self.buildMenu()
 
         self.watcher.startListening(watcherCallback: self.outputSourceChanged)
@@ -39,5 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func outputSourceChanged(deviceType: AudioDeviceType) {
         print("Sound coming from \(deviceType)")
+        statusItem.button?.image = deviceType.icon
     }
 }

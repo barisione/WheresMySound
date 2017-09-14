@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "StatusOutputHeadphones.png",
+      "filename" : "StatusOutputFireWire.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "StatusOutputHeadphones@2x.png",
+      "filename" : "StatusOutputFireWire@2x.png",
       "scale" : "2x"
     },
     {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 import CoreAudio
 
 private func stringFrom(fourCC: UInt32) -> String {
@@ -74,6 +75,51 @@ enum AudioDeviceType {
         }
 
         self = type(of: self).typeFrom(transportType: transportType)
+    }
+
+    var icon: NSImage {
+        get {
+            let icon = self.iconNonTemplate
+            icon.isTemplate = true
+            return icon
+        }
+    }
+
+    private var iconNonTemplate: NSImage {
+        get {
+            switch self {
+            case .Unknown:
+                return NSImage(named: "StatusOutputUnknown")!
+            case .InternalSpeaker:
+                return NSImage(named: "StatusOutputInternalSpeaker")!
+            case .ExternalSpeaker:
+                return NSImage(named: "StatusOutputExternalSpeaker")!
+            case .Headphones:
+                return NSImage(named: "StatusOutputHeadphones")!
+            case .Bluetooth:
+                return NSImage(named: "StatusOutputBluetooth")!
+            case .USB:
+                return NSImage(named: "StatusOutputUSB")!
+            case .HDMI:
+                return NSImage(named: "StatusOutputHDMI")!
+            case .DisplayPort:
+                return NSImage(named: "StatusOutputDisplayPort")!
+            case .FireWire:
+                return NSImage(named: "StatusOutputFireWire")!
+            case .Thunderbolt:
+                return NSImage(named: "StatusOutputThunderbolt")!
+            case .Ethernet:
+                return NSImage(named: "StatusOutputEthernet")!
+            case .PCI:
+                return NSImage(named: "StatusOutputExternalSpeaker")!
+            case .AirPlay:
+                return NSImage(named: "StatusOutputAirplay")!
+            case .Virtual:
+                return NSImage(named: "StatusOutputVirtual")!
+            case .Aggregate:
+                return NSImage(named: "StatusOutputUnknown")!
+            }
+        }
     }
 }
 
