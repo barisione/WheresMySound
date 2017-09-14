@@ -1,0 +1,7 @@
+*~
+*.swp
+*.py[co]
+.DS_Store
+xcuserdata
+*.xccheckout
+*.xcscmblueprint
