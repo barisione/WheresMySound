@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    var currentDeviceMenuItem: NSMenuItem?
     var watcher = SoundDeviceWatcher()
 
     #if DEBUG
@@ -35,11 +36,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func buildMenu() {
         let menu = NSMenu()
 
+        self.currentDeviceMenuItem = NSMenuItem(title: "",
+                                                action: nil,
+                                                keyEquivalent: "")
+        menu.addItem(self.currentDeviceMenuItem!)
+
         #if DEBUG
             menu.addItem(NSMenuItem(title: "DEBUG: Start cycling icons",
                                     action: #selector(AppDelegate.startCyclingIcons(_:)),
                                     keyEquivalent: "c"))
-            menu.addItem(NSMenuItem.separator())
         #endif
 
         menu.addItem(NSMenuItem(title: "Quit Where's My Sound",
@@ -52,6 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func outputSourceChanged(deviceType: AudioDeviceType) {
         print("Sound coming from \(deviceType)")
         statusItem.button?.image = deviceType.icon
+        self.currentDeviceMenuItem?.title = "Default output: \(deviceType.displayName)"
     }
 
     #if DEBUG
@@ -78,19 +84,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .Aggregate,
             ]
 
-        var allIcons = [(AudioDeviceType, NSImage)]()
-        for type in allTypes {
-            allIcons.append((type, type.icon))
-        }
-
         var currentIndex = 0;
         self.cyclingIconsTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) {
             (_) in
-            guard let button = self.statusItem.button else { return }
-            let (type, image) = allIcons[currentIndex]
-            print("DEBUG: Setting icon for \(type)")
-            button.image = image
-            currentIndex = (currentIndex + 1) % allIcons.count
+            self.outputSourceChanged(deviceType: allTypes[currentIndex])
+            currentIndex = (currentIndex + 1) % allTypes.count
         }
 
         self.cyclingIconsTimer!.fire()

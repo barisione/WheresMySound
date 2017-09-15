@@ -121,6 +121,43 @@ enum AudioDeviceType {
             }
         }
     }
+
+    var displayName: String {
+        get {
+            switch self {
+            case .Unknown:
+                return "unknown device"
+            case .InternalSpeaker:
+                return "internal speaker"
+            case .ExternalSpeaker:
+                return "external speaker"
+            case .Headphones:
+                return "headphones"
+            case .Bluetooth:
+                return "Bluetooth"
+            case .USB:
+                return "USB"
+            case .HDMI:
+                return "HDMI"
+            case .DisplayPort:
+                return "DisplayPort"
+            case .FireWire:
+                return "FireWire"
+            case .Thunderbolt:
+                return "Thunderbolt"
+            case .Ethernet:
+                return "Ethernet (AVB)"
+            case .PCI:
+                return "external speaker (PCI)"
+            case .AirPlay:
+                return "AirPlay"
+            case .Virtual:
+                return "virtual device"
+            case .Aggregate:
+                return "aggregate device"
+            }
+        }
+    }
 }
 
 class SoundDeviceWatcher {
