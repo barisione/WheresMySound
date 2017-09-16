@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */; };
+		417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCE401F6D8C3700381B5C /* StatusItemController.swift */; };
 		4195737D1F648260007E71AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195737C1F648260007E71AD /* AppDelegate.swift */; };
 		4195737F1F648260007E71AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195737E1F648260007E71AD /* ViewController.swift */; };
 		419573811F648260007E71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419573801F648260007E71AD /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Tinting.swift"; sourceTree = "<group>"; };
+		417FCE401F6D8C3700381B5C /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		419573791F648260007E71AD /* WheresMySound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheresMySound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4195737C1F648260007E71AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4195737E1F648260007E71AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				41A4AAFC1F66BE0800D201E3 /* ListenerHack.h */,
 				41A4AAF91F66BDE900D201E3 /* WheresMySound-Bridging-Header.h */,
 				41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */,
+				417FCE401F6D8C3700381B5C /* StatusItemController.swift */,
 			);
 			path = WheresMySound;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */,
 				41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */,
 				4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */,
 				4195737F1F648260007E71AD /* ViewController.swift in Sources */,
