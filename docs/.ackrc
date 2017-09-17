@@ -1,0 +1,4 @@
+# Ignore build directories when using ack (which is like grep but cooler).
+# Ack's package is called ack-grep in Ubuntu/Debian.
+
+--ignore-dir=_site

@@ -6,3 +6,5 @@ xcuserdata
 *.xccheckout
 *.xcscmblueprint
 /build
+/docs/Gemfile.lock
+/docs/_site/

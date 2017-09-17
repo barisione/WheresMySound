@@ -1,0 +1,253 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* ======== Generic ======== */
+
+a {
+    outline: none !important;
+}
+
+footer,
+#navbar li a {
+    /* This matches the existing shadows. */
+    text-shadow: #111 0px 0px 10px;
+}
+
+.twa {
+    /* Hide the text in twa element. This is shown again through JS if needed. */
+    text-indent: -9999px;
+}
+
+.twa.about_detail {
+    width: 1.4em;
+    height: 1.4em;
+    margin: 0 0.1em 0 0.1em !important;
+    vertical-align: 0.1em;
+    background-size: 1.4em 1.4em;
+}
+
+.no_wrap {
+    white-space: nowrap;
+}
+
+@mixin linear-gradient($property, $fallback, $angle_side_corner, $color-stops...) {
+    #{$property}: $fallback;
+    #{$property}: -moz-linear-gradient($angle_side_corner, $color-stops);
+    #{$property}: -webkit-linear-gradient($angle_side_corner, $color-stops);
+    #{$property}: -ms-linear-gradient($angle_side_corner, $color-stops);
+    #{$property}: -o-linear-gradient($angle_side_corner, $color-stops);
+    #{$property}: linear-gradient($angle_side_corner, $color-stops);
+}
+
+#header_wrap {
+    @include linear-gradient(background, navy, top, #2f80ed, #56ccf2);
+}
+
+img.content {
+    border-radius: 10px;
+    box-shadow: 0 0 10px #111;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ======== Header ======== */
+
+header table,
+header table tr,
+header table td {
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+}
+
+header table {
+    margin: 0 0 15px 0;
+}
+
+header table td#cell_logo div#logo_image {
+    margin: 0;
+    box-shadow: none !important;
+    border-width: 0px !important;
+    width: 128px;
+    height: 128px;
+    background: url("/WheresMySound/img/logo-256.png") no-repeat center;
+    background-size: 128px;
+    @media screen and (max-width: 500px) {
+        width: 64px;
+        height: 64px;
+        background-size: 64px;
+    }
+    @media screen and (max-width: 320px) {
+        display: none;
+    }
+}
+
+header table td#cell_text {
+    padding-left: 10px !important;
+}
+
+#project_tagline {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+#forkme_banner {
+  background-image: url("/WheresMySound/img/github.svg");
+  background-color: #3C3C3C;
+  background-size: 24px;
+  padding-right: 38px;
+  background-position-y: 40%;
+}
+
+/* ======== Navigation bar ======== */
+
+#navbar {
+    /* While we have no links in the navbar we just keep it visible as
+     * a visual separation between the header and the body. */
+    min-height: 2px;
+    max-height: 2px;
+
+    /* Quick hack to make the navbar extend.
+     * It will work until people start using monitor bigger than 6K... */
+    margin: 0 -3010px;
+    padding: 0 3000px;
+
+    overflow: hidden;
+    background-color: #3C3C3C;
+}
+
+#header_wrap {
+    /* This is for the above hack. */
+    overflow: hidden;
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#navbar li {
+    float: left;
+}
+
+#navbar li a {
+    display: block;
+    color: white;
+    padding: 15px 15px 10px 15px; /* 10px on the bottom because of the border. */
+    border-bottom: 5px solid transparent;
+    text-decoration: none;
+}
+
+#navbar li a.active {
+    border-bottom-color: #2f80ed;
+}
+
+#navbar li a:hover {
+    /* This matches the GitHub button. */
+    background-color: #2f80ed;
+}
+
+#header_wrap header.inner {
+    /* Don't leave space after the navbar. */
+    padding-bottom: 0;
+}
+
+#main_content_wrap {
+    /* The content has a border which would be visible between navbar and
+     * content, so we need to hide it. */
+    border-top-width: 0;
+}
+
+/* ======== Footer ======== */
+
+footer .copyright a {
+    color: #2f80ed;
+    text-decoration: none;
+}
+
+footer .copyright a:hover {
+    color: white;
+}
+
+/* ======== Code ======== */
+
+/* Comments */
+.highlight .c {
+    color: rgb(14, 125, 185);
+}
+
+/* Prompts */
+.highlight .gp {
+    color: darkgrey;
+}
+
+/* Test and similar keywords (which, in our examples, are just names...) */
+.highlight .nb {
+    color: black;
+}
+
+/* Not sure what this is supposed to be, but it only hightlights "(", ")",
+ * and "[" and looks ugly. */
+.highlight .o {
+    font-weight: 400;
+}
+
+/* ======== Content ======== */
+
+#main_content {
+    padding-top: 20px; /* The default is 40px which is too much. */
+}
+
+h2 {
+    /* The default 10px top margin is too little. */
+    margin-top: 20px;
+}
+
+h2:first-child {
+    /* But the first element needs less margin. */
+    margin-top: 5px;
+}
+
+pre {
+    /* Without this the pre becomes 640px-wide like the rest of the body,
+     * so it overflows its container (because of the padding). */
+    box-sizing: border-box;
+}
+
+details {
+    margin-bottom: 10px;
+}
+
+details[open] {
+    margin-bottom: 25px;
+}
+
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.extra-space-top {
+    margin-top: 25px;
+}
+
+#main_content li {
+    margin: 3px 0;
+}
+
+#main_content ul ul,
+#main_content ul ol,
+#main_content ol ol,
+#main_content ol ul {
+    margin-bottom: 0;
+}
