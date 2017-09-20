@@ -15,7 +15,36 @@
 		419573841F648260007E71AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419573821F648260007E71AD /* Main.storyboard */; };
 		4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195738B1F653770007E71AD /* SoundDeviceWatcher.swift */; };
 		41A4AAFB1F66BDE900D201E3 /* ListenerHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4AAFA1F66BDE900D201E3 /* ListenerHack.m */; };
+		41ABEF9C1F74F94E00511727 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41ABEF9B1F74F94E00511727 /* AppDelegate.m */; };
+		41ABEF9F1F74F94E00511727 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41ABEF9E1F74F94E00511727 /* main.m */; };
+		41ABEFA41F74F94E00511727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41ABEFA31F74F94E00511727 /* Assets.xcassets */; };
+		41ABEFA71F74F94E00511727 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABEFA51F74F94E00511727 /* Main.storyboard */; };
+		41ABEFAD1F74FA0500511727 /* WheresMySoundHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41ABEF981F74F94E00511727 /* WheresMySoundHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		41F0C8B71F71B0F0009669BA /* AutoStartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F0C8B61F71B0F0009669BA /* AutoStartController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		41ABEFB01F74FD4000511727 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419573711F648260007E71AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41ABEF971F74F94E00511727;
+			remoteInfo = WheresMySoundHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		41ABEFAC1F74F9E600511727 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				41ABEFAD1F74FA0500511727 /* WheresMySoundHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Tinting.swift"; sourceTree = "<group>"; };
@@ -30,10 +59,27 @@
 		41A4AAF91F66BDE900D201E3 /* WheresMySound-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WheresMySound-Bridging-Header.h"; sourceTree = "<group>"; };
 		41A4AAFA1F66BDE900D201E3 /* ListenerHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerHack.m; sourceTree = "<group>"; };
 		41A4AAFC1F66BE0800D201E3 /* ListenerHack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListenerHack.h; sourceTree = "<group>"; };
+		41ABEF981F74F94E00511727 /* WheresMySoundHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheresMySoundHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41ABEF9A1F74F94E00511727 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		41ABEF9B1F74F94E00511727 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		41ABEF9E1F74F94E00511727 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		41ABEFA31F74F94E00511727 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41ABEFA61F74F94E00511727 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		41ABEFA81F74F94E00511727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41ABEFAE1F74FBF300511727 /* WheresMySound.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WheresMySound.entitlements; sourceTree = "<group>"; };
+		41ABEFAF1F74FC0600511727 /* WheresMySoundHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WheresMySoundHelper.entitlements; sourceTree = "<group>"; };
+		41F0C8B61F71B0F0009669BA /* AutoStartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStartController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		419573761F648260007E71AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41ABEF951F74F94E00511727 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4195737B1F648260007E71AD /* WheresMySound */,
+				41ABEF991F74F94E00511727 /* WheresMySoundHelper */,
 				4195737A1F648260007E71AD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				419573791F648260007E71AD /* WheresMySound.app */,
+				41ABEF981F74F94E00511727 /* WheresMySoundHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,6 +110,7 @@
 		4195737B1F648260007E71AD /* WheresMySound */ = {
 			isa = PBXGroup;
 			children = (
+				41ABEFAE1F74FBF300511727 /* WheresMySound.entitlements */,
 				419573801F648260007E71AD /* Assets.xcassets */,
 				4195737C1F648260007E71AD /* AppDelegate.swift */,
 				4195737E1F648260007E71AD /* ViewController.swift */,
@@ -73,8 +122,31 @@
 				41A4AAF91F66BDE900D201E3 /* WheresMySound-Bridging-Header.h */,
 				41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */,
 				417FCE401F6D8C3700381B5C /* StatusItemController.swift */,
+				41F0C8B61F71B0F0009669BA /* AutoStartController.swift */,
 			);
 			path = WheresMySound;
+			sourceTree = "<group>";
+		};
+		41ABEF991F74F94E00511727 /* WheresMySoundHelper */ = {
+			isa = PBXGroup;
+			children = (
+				41ABEFAF1F74FC0600511727 /* WheresMySoundHelper.entitlements */,
+				41ABEFA81F74F94E00511727 /* Info.plist */,
+				41ABEFA31F74F94E00511727 /* Assets.xcassets */,
+				41ABEFA51F74F94E00511727 /* Main.storyboard */,
+				41ABEF9A1F74F94E00511727 /* AppDelegate.h */,
+				41ABEF9B1F74F94E00511727 /* AppDelegate.m */,
+				41ABEF9D1F74F94E00511727 /* Supporting Files */,
+			);
+			path = WheresMySoundHelper;
+			sourceTree = "<group>";
+		};
+		41ABEF9D1F74F94E00511727 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				41ABEF9E1F74F94E00511727 /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,14 +159,33 @@
 				419573751F648260007E71AD /* Sources */,
 				419573761F648260007E71AD /* Frameworks */,
 				419573771F648260007E71AD /* Resources */,
+				41ABEFAC1F74F9E600511727 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41ABEFB11F74FD4000511727 /* PBXTargetDependency */,
+			);
+			name = WheresMySound;
+			productName = WheresMySound;
+			productReference = 419573791F648260007E71AD /* WheresMySound.app */;
+			productType = "com.apple.product-type.application";
+		};
+		41ABEF971F74F94E00511727 /* WheresMySoundHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41ABEFAB1F74F94E00511727 /* Build configuration list for PBXNativeTarget "WheresMySoundHelper" */;
+			buildPhases = (
+				41ABEF941F74F94E00511727 /* Sources */,
+				41ABEF951F74F94E00511727 /* Frameworks */,
+				41ABEF961F74F94E00511727 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = WheresMySound;
-			productName = WheresMySound;
-			productReference = 419573791F648260007E71AD /* WheresMySound.app */;
+			name = WheresMySoundHelper;
+			productName = WheresMySoundHelper;
+			productReference = 41ABEF981F74F94E00511727 /* WheresMySoundHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -112,6 +203,21 @@
 						DevelopmentTeam = ZMH85PTZ89;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					41ABEF971F74F94E00511727 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = ZMH85PTZ89;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -129,6 +235,7 @@
 			projectRoot = "";
 			targets = (
 				419573781F648260007E71AD /* WheresMySound */,
+				41ABEF971F74F94E00511727 /* WheresMySoundHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -143,6 +250,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41ABEF961F74F94E00511727 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41ABEFA41F74F94E00511727 /* Assets.xcassets in Resources */,
+				41ABEFA71F74F94E00511727 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -150,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41F0C8B71F71B0F0009669BA /* AutoStartController.swift in Sources */,
 				417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */,
 				41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */,
 				4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */,
@@ -159,13 +276,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41ABEF941F74F94E00511727 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41ABEF9F1F74F94E00511727 /* main.m in Sources */,
+				41ABEF9C1F74F94E00511727 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41ABEFB11F74FD4000511727 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41ABEF971F74F94E00511727 /* WheresMySoundHelper */;
+			targetProxy = 41ABEFB01F74FD4000511727 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		419573821F648260007E71AD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				419573831F648260007E71AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		41ABEFA51F74F94E00511727 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41ABEFA61F74F94E00511727 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -270,12 +412,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WheresMySound/WheresMySound.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = ZMH85PTZ89;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WheresMySound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.barisione.WheresMySound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WheresMySound/WheresMySound-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -287,14 +432,51 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WheresMySound/WheresMySound.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = ZMH85PTZ89;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WheresMySound/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.barisione.WheresMySound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WheresMySound/WheresMySound-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		41ABEFA91F74F94E00511727 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WheresMySoundHelper/WheresMySoundHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZMH85PTZ89;
+				INFOPLIST_FILE = WheresMySoundHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.barisione.WheresMySoundHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		41ABEFAA1F74F94E00511727 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WheresMySoundHelper/WheresMySoundHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZMH85PTZ89;
+				INFOPLIST_FILE = WheresMySoundHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.barisione.WheresMySoundHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -318,6 +500,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		41ABEFAB1F74F94E00511727 /* Build configuration list for PBXNativeTarget "WheresMySoundHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41ABEFA91F74F94E00511727 /* Debug */,
+				41ABEFAA1F74F94E00511727 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

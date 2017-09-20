@@ -13,6 +13,7 @@ class StatusItemController {
     var currentDeviceMenuItem: NSMenuItem?
     var watcher = SoundDeviceWatcher()
     var iconUpdateTimer: Timer?
+    let autoStart = AutoStartController(url: Bundle.main.bundleURL, defaults: UserDefaults.standard)
 
     #if DEBUG
     var cyclingIconsTimer: Timer?
@@ -22,6 +23,19 @@ class StatusItemController {
         self.buildMenu()
 
         self.watcher.startListening(watcherCallback: self.outputSourceChanged)
+
+        if self.autoStart.storedValue == .notEnabledYet {
+            let q = "Where's My Sound adds an icon in your status area and, to be useful, should always be running.\n" +
+            "\n" +
+            "Do you want to automatically start Where's My Sound when you login?"
+            let autoStart = self.ask(title: "Start Where's My Sound at login",
+                                     question: q,
+                                     yes: "Start automatically",
+                                     no: "Don't start")
+            self.autoStart.isEnabled = autoStart
+            // FIXME: If disabled, tell the user they can re-enable this from the preferences dialog (when we are going
+            // to have one...).
+        }
     }
 
     func tearDownStatusItem() {
@@ -136,6 +150,16 @@ class StatusItemController {
         } else {
             return false
         }
+    }
+
+    private func ask(title: String, question: String, yes: String, no: String) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = title
+        alert.informativeText = question
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: yes)
+        alert.addButton(withTitle: no)
+        return alert.runModal() == NSAlertFirstButtonReturn
     }
 
     #if DEBUG
