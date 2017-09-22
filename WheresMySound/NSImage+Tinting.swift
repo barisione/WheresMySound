@@ -15,7 +15,7 @@ extension NSImage {
         tinted.lockFocus()
         color.set()
         let rect = NSMakeRect(0, 0, self.size.width, self.size.height)
-        NSRectFillUsingOperation(rect, .sourceAtop)
+        rect.fill(using: .sourceAtop)
         tinted.unlockFocus()
 
         return tinted

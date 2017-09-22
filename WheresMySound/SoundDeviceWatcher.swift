@@ -89,35 +89,35 @@ enum AudioDeviceType {
         get {
             switch self {
             case .Unknown:
-                return NSImage(named: "StatusOutputUnknown")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputUnknown"))!
             case .InternalSpeaker:
-                return NSImage(named: "StatusOutputInternalSpeaker")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputInternalSpeaker"))!
             case .ExternalSpeaker:
-                return NSImage(named: "StatusOutputExternalSpeaker")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputExternalSpeaker"))!
             case .Headphones:
-                return NSImage(named: "StatusOutputHeadphones")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputHeadphones"))!
             case .Bluetooth:
-                return NSImage(named: "StatusOutputBluetooth")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputBluetooth"))!
             case .USB:
-                return NSImage(named: "StatusOutputUSB")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputUSB"))!
             case .HDMI:
-                return NSImage(named: "StatusOutputHDMI")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputHDMI"))!
             case .DisplayPort:
-                return NSImage(named: "StatusOutputDisplayPort")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputDisplayPort"))!
             case .FireWire:
-                return NSImage(named: "StatusOutputFireWire")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputFireWire"))!
             case .Thunderbolt:
-                return NSImage(named: "StatusOutputThunderbolt")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputThunderbolt"))!
             case .Ethernet:
-                return NSImage(named: "StatusOutputEthernet")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputEthernet"))!
             case .PCI:
-                return NSImage(named: "StatusOutputExternalSpeaker")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputExternalSpeaker"))!
             case .AirPlay:
-                return NSImage(named: "StatusOutputAirplay")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputAirplay"))!
             case .Virtual:
-                return NSImage(named: "StatusOutputVirtual")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputVirtual"))!
             case .Aggregate:
-                return NSImage(named: "StatusOutputUnknown")!
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputUnknown"))!
             }
         }
     }

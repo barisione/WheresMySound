@@ -9,7 +9,7 @@
 import Cocoa
 
 class StatusItemController {
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     var currentDeviceMenuItem: NSMenuItem?
     var watcher = SoundDeviceWatcher()
     var iconUpdateTimer: Timer?
@@ -159,7 +159,7 @@ class StatusItemController {
         alert.alertStyle = .informational
         alert.addButton(withTitle: yes)
         alert.addButton(withTitle: no)
-        return alert.runModal() == NSAlertFirstButtonReturn
+        return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
     }
 
     #if DEBUG
