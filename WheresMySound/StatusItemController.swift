@@ -9,8 +9,10 @@
 import Cocoa
 
 class StatusItemController {
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    var currentDeviceMenuItem: NSMenuItem?
+    lazy var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    lazy var currentDeviceMenuItem = NSMenuItem(title: "",
+                                                action: nil,
+                                                keyEquivalent: "")
     var watcher = SoundDeviceWatcher()
     var iconUpdateTimer: Timer?
     let autoStart = AutoStartController(url: Bundle.main.bundleURL, defaults: UserDefaults.standard)
@@ -50,9 +52,7 @@ class StatusItemController {
     private func buildMenu() {
         let menu = NSMenu()
 
-        self.currentDeviceMenuItem = menu.addItem(withTitle: "",
-                                                  action: nil,
-                                                  keyEquivalent: "")
+        menu.addItem(self.currentDeviceMenuItem)
 
         #if DEBUG
             menu.addItem(withTitle: "DEBUG: Start cycling icons",
@@ -80,7 +80,7 @@ class StatusItemController {
                                         animate: Bool) {
         print("Sound coming from \(deviceType)")
 
-        self.currentDeviceMenuItem?.title = "Default output: \(deviceType.displayName)"
+        self.currentDeviceMenuItem.title = "Default output: \(deviceType.displayName)"
 
         if animate {
             self.startIconAnimation(deviceType: deviceType)
