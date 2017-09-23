@@ -56,6 +56,7 @@ class StatusItemController {
 
         #if DEBUG
             menu.addItem(withTitle: "DEBUG: Start cycling icons",
+                         target: self,
                          action: #selector(self.startCyclingIcons(_:)),
                          keyEquivalent: "c")
         #endif

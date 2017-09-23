@@ -21,6 +21,7 @@
 		41ABEFA71F74F94E00511727 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABEFA51F74F94E00511727 /* Main.storyboard */; };
 		41ABEFAD1F74FA0500511727 /* WheresMySoundHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41ABEF981F74F94E00511727 /* WheresMySoundHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		41F0C8B71F71B0F0009669BA /* AutoStartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F0C8B61F71B0F0009669BA /* AutoStartController.swift */; };
+		41F57FCF1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F57FCE1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		41ABEFAE1F74FBF300511727 /* WheresMySound.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WheresMySound.entitlements; sourceTree = "<group>"; };
 		41ABEFAF1F74FC0600511727 /* WheresMySoundHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WheresMySoundHelper.entitlements; sourceTree = "<group>"; };
 		41F0C8B61F71B0F0009669BA /* AutoStartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStartController.swift; sourceTree = "<group>"; };
+		41F57FCE1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+AddItemWithTarget.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				41A4AAFC1F66BE0800D201E3 /* ListenerHack.h */,
 				41A4AAF91F66BDE900D201E3 /* WheresMySound-Bridging-Header.h */,
 				41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */,
+				41F57FCE1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift */,
 				417FCE401F6D8C3700381B5C /* StatusItemController.swift */,
 				41F0C8B61F71B0F0009669BA /* AutoStartController.swift */,
 			);
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41F0C8B71F71B0F0009669BA /* AutoStartController.swift in Sources */,
+				41F57FCF1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift in Sources */,
 				417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */,
 				41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */,
 				4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */,
