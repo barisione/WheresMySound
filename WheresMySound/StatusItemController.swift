@@ -50,20 +50,19 @@ class StatusItemController {
     private func buildMenu() {
         let menu = NSMenu()
 
-        self.currentDeviceMenuItem = NSMenuItem(title: "",
-                                                action: nil,
-                                                keyEquivalent: "")
-        menu.addItem(self.currentDeviceMenuItem!)
+        self.currentDeviceMenuItem = menu.addItem(withTitle: "",
+                                                  action: nil,
+                                                  keyEquivalent: "")
 
         #if DEBUG
-            menu.addItem(NSMenuItem(title: "DEBUG: Start cycling icons",
-                                    action: #selector(StatusItemController.startCyclingIcons(_:)),
-                                    keyEquivalent: "c"))
+            menu.addItem(withTitle: "DEBUG: Start cycling icons",
+                         action: #selector(self.startCyclingIcons(_:)),
+                         keyEquivalent: "c")
         #endif
 
-        menu.addItem(NSMenuItem(title: "Quit Where's My Sound",
-                                action: #selector(NSApplication.terminate(_:)),
-                                keyEquivalent: "q"))
+        menu.addItem(withTitle: "Quit Where's My Sound",
+                     action: #selector(NSApplication.terminate(_:)),
+                     keyEquivalent: "q")
 
         statusItem.menu = menu
     }
