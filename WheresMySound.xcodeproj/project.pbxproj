@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */; };
+		411460771F78E6E10066C99D /* HelpPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411460751F78E6E10066C99D /* HelpPopover.swift */; };
+		415140D11FF7E18800AF40E2 /* HowToMoveIcon.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 415140D01FF7E18800AF40E2 /* HowToMoveIcon.mp4 */; };
 		417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCE401F6D8C3700381B5C /* StatusItemController.swift */; };
 		4195737D1F648260007E71AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195737C1F648260007E71AD /* AppDelegate.swift */; };
 		4195737F1F648260007E71AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195737E1F648260007E71AD /* ViewController.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Tinting.swift"; sourceTree = "<group>"; };
+		411460751F78E6E10066C99D /* HelpPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopover.swift; sourceTree = "<group>"; };
+		415140D01FF7E18800AF40E2 /* HowToMoveIcon.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = HowToMoveIcon.mp4; sourceTree = "<group>"; };
 		417FCE401F6D8C3700381B5C /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		419573791F648260007E71AD /* WheresMySound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheresMySound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4195737C1F648260007E71AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		415140D31FF7E1FA00AF40E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				415140D01FF7E18800AF40E2 /* HowToMoveIcon.mp4 */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		419573701F648260007E71AD = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 		4195737B1F648260007E71AD /* WheresMySound */ = {
 			isa = PBXGroup;
 			children = (
+				415140D31FF7E1FA00AF40E2 /* Supporting Files */,
 				41ABEFAE1F74FBF300511727 /* WheresMySound.entitlements */,
 				419573801F648260007E71AD /* Assets.xcassets */,
 				4195737C1F648260007E71AD /* AppDelegate.swift */,
@@ -126,6 +139,7 @@
 				41F57FCE1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift */,
 				417FCE401F6D8C3700381B5C /* StatusItemController.swift */,
 				41F0C8B61F71B0F0009669BA /* AutoStartController.swift */,
+				411460751F78E6E10066C99D /* HelpPopover.swift */,
 			);
 			path = WheresMySound;
 			sourceTree = "<group>";
@@ -250,6 +264,7 @@
 			files = (
 				419573811F648260007E71AD /* Assets.xcassets in Resources */,
 				419573841F648260007E71AD /* Main.storyboard in Resources */,
+				415140D11FF7E18800AF40E2 /* HowToMoveIcon.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +287,7 @@
 				41F0C8B71F71B0F0009669BA /* AutoStartController.swift in Sources */,
 				41F57FCF1F765C02006E45FA /* NSMenu+AddItemWithTarget.swift in Sources */,
 				417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */,
+				411460771F78E6E10066C99D /* HelpPopover.swift in Sources */,
 				41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */,
 				4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */,
 				4195737F1F648260007E71AD /* ViewController.swift in Sources */,

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -657,7 +659,43 @@
                     </connections>
                 </application>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-15" y="-168"/>
+        </scene>
+        <!--HelpPopoverViewController-->
+        <scene sceneID="7a0-LV-5vy">
+            <objects>
+                <viewController storyboardIdentifier="HelpPopoverViewController" id="z0s-bC-Vj6" userLabel="HelpPopoverViewController" customClass="HelpPopoverViewController" customModule="WheresMySound" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="gRg-CJ-wIw">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="180"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p0m-87-RlR">
+                                <rect key="frame" x="345" y="13" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pX3-ti-Rh1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="okClicked:" target="z0s-bC-Vj6" id="Dgd-Z1-qtQ"/>
+                                </connections>
+                            </button>
+                            <avPlayerView focusRingType="none" fixedFrame="YES" controlsStyle="none" translatesAutoresizingMaskIntoConstraints="NO" id="add-yn-Y7T" userLabel="playerView">
+                                <rect key="frame" x="20" y="60" width="400" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                            </avPlayerView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="playerView" destination="add-yn-Y7T" id="x6R-E2-Lvm"/>
+                    </connections>
+                </viewController>
+                <customObject id="cre-k9-ODd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-38" y="213"/>
         </scene>
     </scenes>
 </document>

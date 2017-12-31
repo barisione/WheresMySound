@@ -38,6 +38,8 @@ class StatusItemController {
             // FIXME: If disabled, tell the user they can re-enable this from the preferences dialog (when we are going
             // to have one...).
         }
+
+        HelpPopoverManager.maybeShow(forView: statusItem.button)
     }
 
     func tearDownStatusItem() {
