@@ -67,6 +67,11 @@ class StatusItemController: HelpPopoverDelegate {
                          keyEquivalent: "c")
         #endif
 
+        menu.addItem(withTitle: "Preferences…",
+                     target: self,
+                     action: #selector(self.preferences(_:)),
+                     keyEquivalent: ",")
+
         menu.addItem(withTitle: "About Where’s My Sound",
                      target: self,
                      action: #selector(self.about(_:)),
@@ -221,6 +226,9 @@ class StatusItemController: HelpPopoverDelegate {
         self.cyclingIconsTimer!.fire()
     }
     #endif // DEBUG
+
+    @objc private func preferences(_ sender: Any?) {
+    }
 
     @objc private func about(_ sender: Any?) {
         NSApp.orderFrontStandardAboutPanel(options: [
