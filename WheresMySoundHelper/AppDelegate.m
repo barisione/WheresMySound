@@ -21,7 +21,7 @@
     pathComponents = [pathComponents subarrayWithRange:NSMakeRange(0, pathComponents.count - 4)];
     NSString *path = [NSString pathWithComponents:pathComponents];
 
-    NSLog(@"Helper for Where's My Sound starting main app: %@", path);
+    NSLog(@"Helper for Where’s My Sound starting main app: %@", path);
     [[NSWorkspace sharedWorkspace] launchApplication:path];
 
     [NSApp terminate:nil];

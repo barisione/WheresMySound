@@ -31,10 +31,10 @@ class StatusItemController: HelpPopoverDelegate {
         self.watcher.startListening(watcherCallback: self.outputSourceChanged)
 
         if self.autoStart.storedValue == .notEnabledYet {
-            let q = "Where's My Sound adds an icon in your status area and, to be useful, should always be running.\n" +
+            let q = "Where’s My Sound adds an icon in your status area and, to be useful, should always be running.\n" +
             "\n" +
-            "Do you want to automatically start Where's My Sound when you login?"
-            let autoStart = self.ask(title: "Start Where's My Sound at login",
+            "Do you want to automatically start Where’s My Sound when you login?"
+            let autoStart = self.ask(title: "Start Where’s My Sound at login",
                                      question: q,
                                      yes: "Start automatically",
                                      no: "Don't start")
@@ -86,7 +86,7 @@ class StatusItemController: HelpPopoverDelegate {
 
         menu.addItem(NSMenuItem.separator())
 
-        menu.addItem(withTitle: "Quit Where's My Sound",
+        menu.addItem(withTitle: "Quit Where’s My Sound",
                      action: #selector(NSApplication.terminate(_:)),
                      keyEquivalent: "q")
 
