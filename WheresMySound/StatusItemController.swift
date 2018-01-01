@@ -10,6 +10,7 @@ import Cocoa
 
 class StatusItemController: HelpPopoverDelegate {
     lazy var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    var menu: NSMenu?
     lazy var currentDeviceMenuItem = NSMenuItem(title: "",
                                                 action: nil,
                                                 keyEquivalent: "")
@@ -75,13 +76,16 @@ class StatusItemController: HelpPopoverDelegate {
                      action: #selector(NSApplication.terminate(_:)),
                      keyEquivalent: "q")
 
-        statusItem.menu = menu
+        self.menu = menu
+        self.statusItem.menu = menu
     }
 
     func didShowPopover() {
+        self.statusItem.menu = nil
     }
 
     func didHidePopover() {
+        self.statusItem.menu = self.menu
     }
 
     private var sourceHasChangedBefore = false
