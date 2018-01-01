@@ -56,7 +56,7 @@ protocol HelpPopoverDelegate {
     func didHidePopover()
 }
 
-class HelpPopoverManager {
+struct HelpPopoverManager {
     private static let popoverAlreadyDismissedKey = "popoverAlreadyDismissed"
 
     private let delegate: HelpPopoverDelegate?
