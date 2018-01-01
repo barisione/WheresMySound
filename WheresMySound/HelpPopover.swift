@@ -51,28 +51,41 @@ class HelpPopoverViewController: NSViewController {
     }
 }
 
+protocol HelpPopoverDelegate {
+    func didShowPopover()
+    func didHidePopover()
+}
+
 class HelpPopoverManager {
     private static let popoverAlreadyDismissedKey = "popoverAlreadyDismissed"
 
-    static func maybeShow(forView view: NSView?) {
+    private let delegate: HelpPopoverDelegate?
+
+    public init(delegate: HelpPopoverDelegate?) {
+        self.delegate = delegate
+    }
+
+    func maybeShow(forView view: NSView?) {
         if !UserDefaults.standard.bool(forKey: HelpPopoverManager.popoverAlreadyDismissedKey) {
             self.show(forView: view)
         }
     }
 
-    static func show(forView view: NSView?) {
+    func show(forView view: NSView?) {
         guard let view = view else { return }
 
-        HelpPopoverManager.newPopover().show(relativeTo: view.bounds,
-                                             of: view,
-                                             preferredEdge: NSRectEdge.minY)
+        self.newPopover().show(relativeTo: view.bounds,
+                               of: view,
+                               preferredEdge: NSRectEdge.minY)
+        self.delegate?.didShowPopover()
     }
 
-    static private func newPopover() -> NSPopover {
+    private func newPopover() -> NSPopover {
         let popover = NSPopover()
         popover.contentViewController = HelpPopoverViewController.newController {
             popover.close()
             UserDefaults.standard.set(true, forKey: HelpPopoverManager.popoverAlreadyDismissedKey)
+            self.delegate?.didHidePopover()
         }
         return popover;
     }

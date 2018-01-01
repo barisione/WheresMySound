@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class StatusItemController {
+class StatusItemController: HelpPopoverDelegate {
     lazy var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     lazy var currentDeviceMenuItem = NSMenuItem(title: "",
                                                 action: nil,
@@ -16,6 +16,9 @@ class StatusItemController {
     var watcher = SoundDeviceWatcher()
     var iconUpdateTimer: Timer?
     let autoStart = AutoStartController(url: Bundle.main.bundleURL, defaults: UserDefaults.standard)
+    lazy var popoverManager = {
+        HelpPopoverManager(delegate: self)
+    }()
 
     #if DEBUG
     var cyclingIconsTimer: Timer?
@@ -39,7 +42,7 @@ class StatusItemController {
             // to have one...).
         }
 
-        HelpPopoverManager.maybeShow(forView: statusItem.button)
+        self.popoverManager.maybeShow(forView: statusItem.button)
     }
 
     func tearDownStatusItem() {
@@ -73,6 +76,12 @@ class StatusItemController {
                      keyEquivalent: "q")
 
         statusItem.menu = menu
+    }
+
+    func didShowPopover() {
+    }
+
+    func didHidePopover() {
     }
 
     private var sourceHasChangedBefore = false
@@ -205,6 +214,6 @@ class StatusItemController {
     #endif // DEBUG
 
     @objc private func help(_ sender: Any?) {
-        HelpPopoverManager.show(forView: statusItem.button)
+        self.popoverManager.show(forView: statusItem.button)
     }
 }
