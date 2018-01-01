@@ -63,6 +63,11 @@ class StatusItemController {
                          keyEquivalent: "c")
         #endif
 
+        menu.addItem(withTitle: "Help",
+                     target: self,
+                     action: #selector(self.help(_:)),
+                     keyEquivalent: "")
+
         menu.addItem(withTitle: "Quit Where's My Sound",
                      action: #selector(NSApplication.terminate(_:)),
                      keyEquivalent: "q")
@@ -198,4 +203,8 @@ class StatusItemController {
         self.cyclingIconsTimer!.fire()
     }
     #endif // DEBUG
+
+    @objc private func help(_ sender: Any?) {
+        HelpPopoverManager.show(forView: statusItem.button)
+    }
 }
