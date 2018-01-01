@@ -41,6 +41,13 @@ class HelpPopoverViewController: NSViewController {
     }
 
     @IBAction func openSoundPreferencesClicked(_ sender: Any) {
+        // Opening the preference pane seems to be the most reliable way to open exactly what we want.
+        if !NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Library/PreferencePanes/Sound.prefPane")) {
+            // But I don't expect it to work forever as the new recommented way to open the panel is using
+            // the x-apple.systempreferences scheme.
+            // Unfortunately this doesn't seem to open the specified pane in 10.11, but only the main one.
+            NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.sound")!)
+        }
     }
 }
 
