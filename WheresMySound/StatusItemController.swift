@@ -72,6 +72,8 @@ class StatusItemController: HelpPopoverDelegate {
                      action: #selector(self.preferences(_:)),
                      keyEquivalent: ",")
 
+        menu.addItem(NSMenuItem.separator())
+
         menu.addItem(withTitle: "About Where’s My Sound",
                      target: self,
                      action: #selector(self.about(_:)),
@@ -81,6 +83,8 @@ class StatusItemController: HelpPopoverDelegate {
                      target: self,
                      action: #selector(self.help(_:)),
                      keyEquivalent: "")
+
+        menu.addItem(NSMenuItem.separator())
 
         menu.addItem(withTitle: "Quit Where's My Sound",
                      action: #selector(NSApplication.terminate(_:)),
