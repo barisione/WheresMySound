@@ -67,6 +67,11 @@ class StatusItemController: HelpPopoverDelegate {
                          keyEquivalent: "c")
         #endif
 
+        menu.addItem(withTitle: "About Where’s My Sound",
+                     target: self,
+                     action: #selector(self.about(_:)),
+                     keyEquivalent: "")
+
         menu.addItem(withTitle: "Help",
                      target: self,
                      action: #selector(self.help(_:)),
@@ -216,6 +221,13 @@ class StatusItemController: HelpPopoverDelegate {
         self.cyclingIconsTimer!.fire()
     }
     #endif // DEBUG
+
+    @objc private func about(_ sender: Any?) {
+        NSApp.orderFrontStandardAboutPanel(options: [
+            NSApplication.AboutPanelOptionKey(rawValue: "ApplicationName"): "Where’s My Sound",
+            NSApplication.AboutPanelOptionKey(rawValue: "Copyright"): "",
+            ])
+    }
 
     @objc private func help(_ sender: Any?) {
         self.popoverManager.show(forView: statusItem.button)
