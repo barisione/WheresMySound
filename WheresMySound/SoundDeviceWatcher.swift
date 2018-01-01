@@ -79,7 +79,7 @@ enum AudioDeviceType {
 
     var icon: NSImage {
         get {
-            let icon = self.iconNonTemplate
+            let icon = iconNonTemplate
             icon.isTemplate = true
             return icon
         }
@@ -185,23 +185,23 @@ class SoundDeviceWatcher {
 
     private func defaultOutputDidChange(numberAddresses: UInt32,
                                         addresses: UnsafePointer<AudioObjectPropertyAddress>) {
-        self.removeOutputSpecificListeners()
+        removeOutputSpecificListeners()
 
-        let newOutputDevice =  self.numericPropertyValue(forDevice: UInt32(kAudioObjectSystemObject),
-                                                         address: self.addressDefaultOutputDevice)
-        NSLog("The default output device changed from \(self.defaultOutputDevice) to \(newOutputDevice)")
-        self.defaultOutputDevice = newOutputDevice
+        let newOutputDevice =  numericPropertyValue(forDevice: UInt32(kAudioObjectSystemObject),
+                                                    address: addressDefaultOutputDevice)
+        NSLog("The default output device changed from \(defaultOutputDevice) to \(newOutputDevice)")
+        defaultOutputDevice = newOutputDevice
 
-        self.addListener(deviceID: self.defaultOutputDevice,
-                         address: self.addressOutputDataSource,
-                         block: self.outputDataSourceDidChangeHackBlock!)
+        addListener(deviceID: defaultOutputDevice,
+                    address: addressOutputDataSource,
+                    block: outputDataSourceDidChangeHackBlock!)
 
         // I don't think the transport type can change for the same device, but let's watch for changes anyway.
-        self.addListener(deviceID: self.defaultOutputDevice,
-                         address: self.addressTransportType,
-                         block:  self.transportTypeDidChangeHackBlock!)
+        addListener(deviceID: defaultOutputDevice,
+                    address: addressTransportType,
+                    block:  transportTypeDidChangeHackBlock!)
 
-        self.updateAudioDeviceType()
+        updateAudioDeviceType()
     }
 
     private static func format(fourCC: UInt32) -> String
@@ -212,34 +212,34 @@ class SoundDeviceWatcher {
 
     private func outputDataSourceDidChange(numberAddresses: UInt32,
                                            addresses: UnsafePointer<AudioObjectPropertyAddress>) {
-        let s = SoundDeviceWatcher.format(fourCC: self.dataSourceType())
+        let s = SoundDeviceWatcher.format(fourCC: dataSourceType())
         NSLog("The data source type changed to \(s)")
-        self.updateAudioDeviceType()
+        updateAudioDeviceType()
     }
 
     private func transportTypeDidChange(numberAddresses: UInt32,
                                         addresses: UnsafePointer<AudioObjectPropertyAddress>) {
-        let s = SoundDeviceWatcher.format(fourCC: self.transportType())
+        let s = SoundDeviceWatcher.format(fourCC: transportType())
         NSLog("The audio transport type changed to \(s)")
-        self.updateAudioDeviceType()
+        updateAudioDeviceType()
     }
 
     func startListening(watcherCallback: @escaping (AudioDeviceType) -> ()) {
         // Workaround for Swift generating a different block pointer every time a closure/method is passed to a
         // CoreAudio function. See HackAudioBlock's documentation for details.
-        self.defaultOutputDidChangeHackBlock = HackAudioBlock(block: self.defaultOutputDidChange)
-        self.outputDataSourceDidChangeHackBlock = HackAudioBlock(block: self.outputDataSourceDidChange)
-        self.transportTypeDidChangeHackBlock = HackAudioBlock(block: self.transportTypeDidChange)
+        defaultOutputDidChangeHackBlock = HackAudioBlock(block: defaultOutputDidChange)
+        outputDataSourceDidChangeHackBlock = HackAudioBlock(block: outputDataSourceDidChange)
+        transportTypeDidChangeHackBlock = HackAudioBlock(block: transportTypeDidChange)
 
-        self.addListener(deviceID: UInt32(kAudioObjectSystemObject),
-                         address: self.addressDefaultOutputDevice,
-                         block: self.defaultOutputDidChangeHackBlock!)
+        addListener(deviceID: UInt32(kAudioObjectSystemObject),
+                    address: addressDefaultOutputDevice,
+                    block: defaultOutputDidChangeHackBlock!)
 
         self.watcherCallback = watcherCallback
 
-        var address = self.addressOutputDataSource
-        self.defaultOutputDidChange(numberAddresses: 1,
-                                    addresses: &address)
+        var address = addressOutputDataSource
+        defaultOutputDidChange(numberAddresses: 1,
+                               addresses: &address)
     }
 
     private func addListener(deviceID: AudioDeviceID,
@@ -254,32 +254,32 @@ class SoundDeviceWatcher {
     }
 
     func stopListening() {
-        self.watcherCallback = nil
+        watcherCallback = nil
 
-        self.removeOutputSpecificListeners()
-        self.removeListener(deviceID: UInt32(kAudioObjectSystemObject),
-                            address: self.addressDefaultOutputDevice,
-                            block: self.defaultOutputDidChangeHackBlock!)
+        removeOutputSpecificListeners()
+        removeListener(deviceID: UInt32(kAudioObjectSystemObject),
+                       address: addressDefaultOutputDevice,
+                       block: defaultOutputDidChangeHackBlock!)
 
-        self.defaultOutputDevice = 0
+        defaultOutputDevice = 0
 
-        self.defaultOutputDidChangeHackBlock = nil
-        self.outputDataSourceDidChangeHackBlock = nil
-        self.transportTypeDidChangeHackBlock = nil
+        defaultOutputDidChangeHackBlock = nil
+        outputDataSourceDidChangeHackBlock = nil
+        transportTypeDidChangeHackBlock = nil
     }
 
     private func removeOutputSpecificListeners()
     {
-        if self.defaultOutputDevice == 0 {
+        if defaultOutputDevice == 0 {
             return
         }
 
-        self.removeListener(deviceID: self.defaultOutputDevice,
-                            address: self.addressOutputDataSource,
-                            block: self.outputDataSourceDidChangeHackBlock!)
-        self.removeListener(deviceID: self.defaultOutputDevice,
-                            address: self.addressTransportType,
-                            block: self.transportTypeDidChangeHackBlock!)
+        removeListener(deviceID: defaultOutputDevice,
+                       address: addressOutputDataSource,
+                       block: outputDataSourceDidChangeHackBlock!)
+        removeListener(deviceID: defaultOutputDevice,
+                       address: addressTransportType,
+                       block: transportTypeDidChangeHackBlock!)
     }
 
     private func removeListener(deviceID: AudioDeviceID,
@@ -294,14 +294,14 @@ class SoundDeviceWatcher {
     }
 
     private func updateAudioDeviceType() {
-        let newType = AudioDeviceType(transportType: self.transportType(), dataSourceType: self.dataSourceType())
+        let newType = AudioDeviceType(transportType: transportType(), dataSourceType: dataSourceType())
 
-        if newType != self.currentDevice {
-            NSLog("The current audio source changed from \(self.currentDevice) to \(newType)")
-            self.currentDevice = newType
+        if newType != currentDevice {
+            NSLog("The current audio source changed from \(currentDevice) to \(newType)")
+            currentDevice = newType
 
-            if let callback = self.watcherCallback {
-                callback(self.currentDevice)
+            if let callback = watcherCallback {
+                callback(currentDevice)
             }
         }
     }
@@ -326,12 +326,12 @@ class SoundDeviceWatcher {
     }
 
     private func dataSourceType() -> UInt32 {
-        return self.numericPropertyValue(forDevice: self.defaultOutputDevice,
-                                         address: self.addressOutputDataSource)
+        return numericPropertyValue(forDevice: defaultOutputDevice,
+                                    address: addressOutputDataSource)
     }
 
     private func transportType() -> UInt32 {
-        return self.numericPropertyValue(forDevice: self.defaultOutputDevice,
-                                         address: self.addressTransportType)
+        return numericPropertyValue(forDevice: defaultOutputDevice,
+                                    address: addressTransportType)
     }
 }

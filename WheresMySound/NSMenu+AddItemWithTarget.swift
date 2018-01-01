@@ -15,9 +15,9 @@ extension NSMenu {
                  target: AnyObject?,
                  action selector: Selector?,
                  keyEquivalent charCode: String) -> NSMenuItem {
-        let item = self.addItem(withTitle: string,
-                                action: selector,
-                                keyEquivalent: charCode)
+        let item = addItem(withTitle: string,
+                           action: selector,
+                           keyEquivalent: charCode)
         item.target = target
         return item
     }

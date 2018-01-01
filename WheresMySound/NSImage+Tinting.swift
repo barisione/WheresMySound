@@ -10,11 +10,11 @@ import Cocoa
 
 extension NSImage {
     func tintedTemplate(color: NSColor) -> NSImage {
-        let tinted = self.copy() as! NSImage
+        let tinted = copy() as! NSImage
         tinted.isTemplate = false
         tinted.lockFocus()
         color.set()
-        let rect = NSMakeRect(0, 0, self.size.width, self.size.height)
+        let rect = NSMakeRect(0, 0, size.width, size.height)
         rect.fill(using: .sourceAtop)
         tinted.unlockFocus()
 

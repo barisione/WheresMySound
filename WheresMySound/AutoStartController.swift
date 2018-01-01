@@ -30,32 +30,32 @@ class AutoStartController {
         self.defaults = defaults
 
         // If the user has made a choice, make sure that the system configuration corresponds to that.
-        if self.storedValue != .notEnabledYet {
-            self.updateSystemAutoStart()
+        if storedValue != .notEnabledYet {
+            updateSystemAutoStart()
         }
     }
 
     var storedValue: AutoStartStatus {
         get {
-            let valueString = self.defaults.string(forKey: "autoStart") ?? ""
+            let valueString = defaults.string(forKey: "autoStart") ?? ""
             return AutoStartStatus(rawValue: valueString) ?? .notEnabledYet
         }
     }
 
     var isEnabled: Bool {
         get {
-            return self.storedValue.isEnabled
+            return storedValue.isEnabled
         }
 
         set(value) {
             let storedValue = value ? AutoStartStatus.enabled : .disabledByUser
-            self.defaults.set(storedValue.rawValue, forKey: "autoStart")
-            self.updateSystemAutoStart()
+            defaults.set(storedValue.rawValue, forKey: "autoStart")
+            updateSystemAutoStart()
         }
     }
 
     private func updateSystemAutoStart() {
-        let autoStart = self.storedValue.isEnabled
+        let autoStart = storedValue.isEnabled
         let helperID = Bundle.main.bundleIdentifier! + "Helper"
         let set = SMLoginItemSetEnabled(helperID as CFString, autoStart)
         if (!set) {

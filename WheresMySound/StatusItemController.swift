@@ -26,62 +26,62 @@ class StatusItemController: HelpPopoverDelegate {
     #endif
 
     func setUpStatusItem() {
-        self.buildMenu()
+        buildMenu()
 
-        self.watcher.startListening(watcherCallback: self.outputSourceChanged)
+        watcher.startListening(watcherCallback: outputSourceChanged)
 
-        if self.autoStart.storedValue == .notEnabledYet {
+        if autoStart.storedValue == .notEnabledYet {
             let q = "Where’s My Sound adds an icon in your status area and, to be useful, should always be running.\n" +
             "\n" +
             "Do you want to automatically start Where’s My Sound when you login?"
-            let autoStart = self.ask(title: "Start Where’s My Sound at login",
-                                     question: q,
-                                     yes: "Start automatically",
-                                     no: "Don't start")
-            self.autoStart.isEnabled = autoStart
+            let answer = ask(title: "Start Where’s My Sound at login",
+                             question: q,
+                             yes: "Start automatically",
+                             no: "Don't start")
+            autoStart.isEnabled = answer
             // FIXME: If disabled, tell the user they can re-enable this from the preferences dialog (when we are going
             // to have one...).
         }
 
-        self.popoverManager.maybeShow(forView: statusItem.button)
+        popoverManager.maybeShow(forView: statusItem.button)
     }
 
     func tearDownStatusItem() {
-        self.watcher.stopListening()
-        self.stopIconAnimation()
+        watcher.stopListening()
+        stopIconAnimation()
 
         #if DEBUG
-            self.cyclingIconsTimer?.invalidate()
+            cyclingIconsTimer?.invalidate()
         #endif
     }
 
     private func buildMenu() {
         let menu = NSMenu()
 
-        menu.addItem(self.currentDeviceMenuItem)
+        menu.addItem(currentDeviceMenuItem)
 
         #if DEBUG
             menu.addItem(withTitle: "DEBUG: Start cycling icons",
                          target: self,
-                         action: #selector(self.startCyclingIcons(_:)),
+                         action: #selector(startCyclingIcons(_:)),
                          keyEquivalent: "c")
         #endif
 
         menu.addItem(withTitle: "Preferences…",
                      target: self,
-                     action: #selector(self.preferences(_:)),
+                     action: #selector(preferences(_:)),
                      keyEquivalent: ",")
 
         menu.addItem(NSMenuItem.separator())
 
         menu.addItem(withTitle: "About Where’s My Sound",
                      target: self,
-                     action: #selector(self.about(_:)),
+                     action: #selector(about(_:)),
                      keyEquivalent: "")
 
         menu.addItem(withTitle: "Help",
                      target: self,
-                     action: #selector(self.help(_:)),
+                     action: #selector(help(_:)),
                      keyEquivalent: "")
 
         menu.addItem(NSMenuItem.separator())
@@ -91,56 +91,56 @@ class StatusItemController: HelpPopoverDelegate {
                      keyEquivalent: "q")
 
         self.menu = menu
-        self.statusItem.menu = menu
+        statusItem.menu = menu
     }
 
     func didShowPopover() {
-        self.statusItem.menu = nil
+        statusItem.menu = nil
     }
 
     func didHidePopover() {
-        self.statusItem.menu = self.menu
+        statusItem.menu = menu
     }
 
     private var sourceHasChangedBefore = false
 
     private func outputSourceChanged(deviceType: AudioDeviceType) {
         // We don't animate the initial style after starting the program.
-        self.updateOutputSourceIcon(deviceType: deviceType, animate: self.sourceHasChangedBefore)
-        self.sourceHasChangedBefore = true
+        updateOutputSourceIcon(deviceType: deviceType, animate: sourceHasChangedBefore)
+        sourceHasChangedBefore = true
     }
 
     private func updateOutputSourceIcon(deviceType: AudioDeviceType,
                                         animate: Bool) {
         print("Sound coming from \(deviceType)")
 
-        self.currentDeviceMenuItem.title = "Default output: \(deviceType.displayName)"
+        currentDeviceMenuItem.title = "Default output: \(deviceType.displayName)"
 
         if animate {
-            self.startIconAnimation(deviceType: deviceType)
+            startIconAnimation(deviceType: deviceType)
         } else {
-            self.setFinalIcon(deviceType: deviceType)
+            setFinalIcon(deviceType: deviceType)
         }
     }
 
     private func setFinalIcon(deviceType: AudioDeviceType) {
-        self.statusItem.button?.image = deviceType.icon
+        statusItem.button?.image = deviceType.icon
     }
 
     private func stopIconAnimation() {
-        self.iconUpdateTimer?.invalidate()
-        self.iconUpdateTimer = nil
+        iconUpdateTimer?.invalidate()
+        iconUpdateTimer = nil
     }
 
     private func startIconAnimation(deviceType: AudioDeviceType) {
-        self.stopIconAnimation()
+        stopIconAnimation()
 
         var currentIteration = 0
         let template = deviceType.icon
 
         // We create several tintend images to display an animation.
         // The gradient gives us the steps in colour we need.
-        let startColor = self.systemIsUsingDarkTheme() ? NSColor.white : NSColor.black
+        let startColor = systemIsUsingDarkTheme() ? NSColor.white : NSColor.black
         let gradient = NSGradient(starting:startColor,
                                   ending:NSColor(red:0, green:0.75, blue:1, alpha:1))!
 
@@ -160,7 +160,7 @@ class StatusItemController: HelpPopoverDelegate {
             allColoredIcons.append(allColoredIcons[i])
         }
 
-        self.iconUpdateTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) {
+        iconUpdateTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) {
             (_) in
 
             let index = currentIteration % allColoredIcons.count
@@ -198,7 +198,7 @@ class StatusItemController: HelpPopoverDelegate {
 
     #if DEBUG
     @objc private func startCyclingIcons(_ sender: Any?) {
-        if self.cyclingIconsTimer != nil {
+        if cyclingIconsTimer != nil {
             return;
         }
 
@@ -221,13 +221,13 @@ class StatusItemController: HelpPopoverDelegate {
             ]
 
         var currentIndex = 0;
-        self.cyclingIconsTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) {
+        cyclingIconsTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) {
             (_) in
             self.updateOutputSourceIcon(deviceType: allTypes[currentIndex], animate: false)
             currentIndex = (currentIndex + 1) % allTypes.count
         }
 
-        self.cyclingIconsTimer!.fire()
+        cyclingIconsTimer!.fire()
     }
     #endif // DEBUG
 
@@ -242,6 +242,6 @@ class StatusItemController: HelpPopoverDelegate {
     }
 
     @objc private func help(_ sender: Any?) {
-        self.popoverManager.show(forView: statusItem.button)
+        popoverManager.show(forView: statusItem.button)
     }
 }

@@ -13,10 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statuItemController = StatusItemController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        self.statuItemController.setUpStatusItem()
+        statuItemController.setUpStatusItem()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        self.statuItemController.tearDownStatusItem()
+        statuItemController.tearDownStatusItem()
     }
 }

@@ -30,14 +30,14 @@ class HelpPopoverViewController: NSViewController {
         let videoURL = Bundle.main.url(forResource: "HowToMoveIcon",
                                        withExtension: "mp4")
         let player = AVQueuePlayer(url: videoURL!)
-        self.playerView.player = player
-        self.looper = AVPlayerLooper(player: player,
-                                     templateItem: player.currentItem!)
+        playerView.player = player
+        looper = AVPlayerLooper(player: player,
+                                templateItem: player.currentItem!)
         player.play()
     }
 
     @IBAction func okClicked(_ sender: Any) {
-        self.onOKClicked?()
+        onOKClicked?()
     }
 
     @IBAction func openSoundPreferencesClicked(_ sender: Any) {
@@ -67,17 +67,17 @@ class HelpPopoverManager {
 
     func maybeShow(forView view: NSView?) {
         if !UserDefaults.standard.bool(forKey: HelpPopoverManager.popoverAlreadyDismissedKey) {
-            self.show(forView: view)
+            show(forView: view)
         }
     }
 
     func show(forView view: NSView?) {
         guard let view = view else { return }
 
-        self.newPopover().show(relativeTo: view.bounds,
-                               of: view,
-                               preferredEdge: NSRectEdge.minY)
-        self.delegate?.didShowPopover()
+        newPopover().show(relativeTo: view.bounds,
+                          of: view,
+                          preferredEdge: NSRectEdge.minY)
+        delegate?.didShowPopover()
     }
 
     private func newPopover() -> NSPopover {
