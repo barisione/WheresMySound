@@ -39,6 +39,9 @@ class HelpPopoverViewController: NSViewController {
     @IBAction func okClicked(_ sender: Any) {
         self.onOKClicked?()
     }
+
+    @IBAction func openSoundPreferencesClicked(_ sender: Any) {
+    }
 }
 
 class HelpPopoverManager {

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.AVKitIBPlugin" version="13771"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -666,7 +667,7 @@
             <objects>
                 <viewController storyboardIdentifier="HelpPopoverViewController" id="z0s-bC-Vj6" userLabel="HelpPopoverViewController" customClass="HelpPopoverViewController" customModule="WheresMySound" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="gRg-CJ-wIw">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="447"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p0m-87-RlR">
@@ -683,10 +684,73 @@ DQ
                                     <action selector="okClicked:" target="z0s-bC-Vj6" id="Dgd-Z1-qtQ"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GTA-wo-5SF">
+                                <rect key="frame" x="18" y="398" width="404" height="29"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Where’s My Sound" usesSingleLineMode="YES" id="8vy-dc-5sN">
+                                    <font key="font" metaFont="systemSemibold" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfd-Tw-Zmg">
+                                <rect key="frame" x="18" y="309" width="404" height="22"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="How to get the most from Where's My Sound" usesSingleLineMode="YES" id="145-r6-cRY">
+                                    <font key="font" metaFont="systemSemibold" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtq-At-35p">
+                                <rect key="frame" x="18" y="339" width="404" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="wXL-xS-ZIQ">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">This app adds an icon in the menu bar of your desktop showing what kind of device is currently selected for playing audio.
+</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QtG-q7-jiR">
+                                <rect key="frame" x="18" y="267" width="404" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="6dQ-dP-b9v">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">• Add the system volum icon to the menu bar.
+   ◦ Open the system Sound Preferences dialog.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <avPlayerView focusRingType="none" fixedFrame="YES" controlsStyle="none" translatesAutoresizingMaskIntoConstraints="NO" id="add-yn-Y7T" userLabel="playerView">
-                                <rect key="frame" x="20" y="60" width="400" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <rect key="frame" x="20" y="61" width="400" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </avPlayerView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctV-nm-oh2">
+                                <rect key="frame" x="18" y="179" width="404" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="W3k-wd-GZ0">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">   ◦ Check the “Show volume in menu bar” box.
+
+• Move the Where‘s My Sound icon next to it like shown here: </string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-GP-M25">
+                                <rect key="frame" x="34" y="231" width="192" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Open Sound Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCu-nk-Hpb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openSoundPreferencesClicked:" target="z0s-bC-Vj6" id="9j6-eG-VC7"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -695,7 +759,7 @@ DQ
                 </viewController>
                 <customObject id="cre-k9-ODd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="213"/>
+            <point key="canvasLocation" x="-38" y="346.5"/>
         </scene>
     </scenes>
 </document>
