@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		410331071FFA7ADA002744B6 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 410331061FFA7ADA002744B6 /* Credits.html */; };
+		410331091FFAE784002744B6 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410331081FFAE784002744B6 /* PreferencesViewController.swift */; };
 		41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */; };
 		411460771F78E6E10066C99D /* HelpPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411460751F78E6E10066C99D /* HelpPopover.swift */; };
 		415140D11FF7E18800AF40E2 /* HowToMoveIcon.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 415140D01FF7E18800AF40E2 /* HowToMoveIcon.mp4 */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		410331061FFA7ADA002744B6 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		410331081FFAE784002744B6 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		41050C9F1F6D1FC2003721E9 /* NSImage+Tinting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Tinting.swift"; sourceTree = "<group>"; };
 		411460751F78E6E10066C99D /* HelpPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPopover.swift; sourceTree = "<group>"; };
 		415140D01FF7E18800AF40E2 /* HowToMoveIcon.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = HowToMoveIcon.mp4; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				417FCE401F6D8C3700381B5C /* StatusItemController.swift */,
 				41F0C8B61F71B0F0009669BA /* AutoStartController.swift */,
 				411460751F78E6E10066C99D /* HelpPopover.swift */,
+				410331081FFAE784002744B6 /* PreferencesViewController.swift */,
 			);
 			path = WheresMySound;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				417FCE411F6D8C3700381B5C /* StatusItemController.swift in Sources */,
 				411460771F78E6E10066C99D /* HelpPopover.swift in Sources */,
 				41050CA01F6D1FC2003721E9 /* NSImage+Tinting.swift in Sources */,
+				410331091FFAE784002744B6 /* PreferencesViewController.swift in Sources */,
 				4195738C1F653770007E71AD /* SoundDeviceWatcher.swift in Sources */,
 				4195737F1F648260007E71AD /* ViewController.swift in Sources */,
 				4195737D1F648260007E71AD /* AppDelegate.swift in Sources */,

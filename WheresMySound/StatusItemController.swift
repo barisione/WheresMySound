@@ -39,8 +39,6 @@ class StatusItemController: HelpPopoverDelegate {
                              yes: "Start automatically",
                              no: "Don't start")
             autoStart.isEnabled = answer
-            // FIXME: If disabled, tell the user they can re-enable this from the preferences dialog (when we are going
-            // to have one...).
         }
 
         popoverManager.maybeShow(forView: statusItem.button)
@@ -232,6 +230,7 @@ class StatusItemController: HelpPopoverDelegate {
     #endif // DEBUG
 
     @objc private func preferences(_ sender: Any?) {
+        PreferencesViewController.showWindow(autoStartController: autoStart)
     }
 
     @objc private func about(_ sender: Any?) {

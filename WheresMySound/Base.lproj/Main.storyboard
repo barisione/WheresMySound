@@ -761,5 +761,35 @@ DQ
             </objects>
             <point key="canvasLocation" x="-38" y="346.5"/>
         </scene>
+        <!--PreferencesViewController-->
+        <scene sceneID="EdT-Pu-H5f">
+            <objects>
+                <viewController storyboardIdentifier="PreferencesViewController" id="Rvw-2T-lA7" userLabel="PreferencesViewController" customClass="PreferencesViewController" customModule="WheresMySound" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="JvC-CX-yN1">
+                        <rect key="frame" x="0.0" y="0.0" width="337" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9tG-BK-O03">
+                                <rect key="frame" x="18" y="18" width="301" height="18"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Automatically start Where’s My Sound at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rnq-7M-qkD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Rvw-2T-lA7" name="value" keyPath="autoStart" id="aoO-Gm-kBa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="autoStartCheckBox" destination="9tG-BK-O03" id="csw-h8-owb"/>
+                    </connections>
+                </viewController>
+                <customObject id="ap0-sN-OFS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="OyI-DL-MSn"/>
+            </objects>
+            <point key="canvasLocation" x="-94.5" y="711"/>
+        </scene>
     </scenes>
 </document>
