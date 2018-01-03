@@ -1,0 +1,1 @@
+* `MacBook-Pro-15.xcf` was copied and converted from the [Mac App Store Marketing Guidelines](https://developer.apple.com/app-store/marketing/guidelines/mac/#images) page and then adapted (according to its licence).
