@@ -1,0 +1,61 @@
+#! /bin/bash
+
+set -e
+
+function get_plist_value() {
+    local -r path="$1"
+    local -r key="$2"
+    local -r value=$(xmlstarlet sel --net -t -v "//key[.='$key']/following-sibling::string[1]" "$path")
+    if [ -z "$value" ]; then
+        echo "No value for key $key." >&2
+        return 1
+    fi
+    echo "$value"
+}
+
+function yes_no() {
+    local -r msg="$1"
+
+    local answer
+    while ! [[ "$answer" =~ ^[yYnN]$ ]]; do
+        echo -n "$msg [y/n] "
+        read -r answer
+    done
+
+    if [[ "$answer" =~ ^[yY]$ ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+readonly info_plist=WheresMySound/Info.plist
+readonly version=$(get_plist_value "$info_plist" CFBundleShortVersionString)
+readonly bundle_version=$(get_plist_value "$info_plist" CFBundleVersion)
+readonly full_version="${version}_${bundle_version}"
+readonly tag="v${full_version}"
+readonly tag_message="Release Where's My Sound version ${full_version}"
+
+echo "We are going to tag Where's My Sound for release with message:"
+echo "    ${tag_message}"
+echo
+
+if ! yes_no 'Do you want to proceed?'; then
+    echo 'Aborted by user.' >&2
+    exit 1
+fi
+
+echo
+echo 'Tagging...'
+git tag --annotate -m "$tag_message" "$tag"
+echo 'Done.'
+
+echo
+echo 'Pushing branch...'
+git push origin master
+echo 'Done.'
+
+echo
+echo 'Pusing tag...'
+git push origin "$tag"
+echo 'Done.'
