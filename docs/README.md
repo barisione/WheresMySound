@@ -4,4 +4,4 @@ Have you ever started playing music accidentally from your laptop speakers think
 
 Where’s My Sound adds an icon in the menu bar of your macOS desktop showing what kind of device is currently selected for playing audio.
 
-<a href="javascript:alert('Sorry, not on the App Store yet!');"><img class="center" src="img/MacAppStoreBadge.png" width="165px" height="40px"></a>
+<a href="https://itunes.apple.com/gb/app/wheres-my-sound/id1330922254" target="_blank"><img class="center" src="img/MacAppStoreBadge.png" width="165px" height="40px"></a>
