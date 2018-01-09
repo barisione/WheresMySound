@@ -23,7 +23,33 @@ private func stringFrom(fourCC: UInt32) -> String {
     return charByte(at: 3) + charByte(at: 2) + charByte(at: 1) + charByte(at: 0)
 }
 
+private func stringFrom(status: OSStatus) -> String {
+    return stringFrom(fourCC: UInt32(bitPattern: status))
+}
+
+private func format(fourCC: UInt32) -> String
+{
+    return "'\(stringFrom(fourCC: fourCC))' (\(fourCC))"
+}
+
+private func format(status: OSStatus) -> String {
+    return "'\(stringFrom(status: status))' (\(status))"
+}
+
+private func format(address: AudioObjectPropertyAddress) -> String {
+    return "{" +
+        "selector: \(format(fourCC: address.mSelector))" +
+        ", " +
+        "scope: \(format(fourCC: address.mScope))" +
+        ", " +
+        "element: \(format(fourCC: address.mElement))" +
+    "}"
+}
+
+
 enum AudioDeviceType {
+    case Unset
+    case Invalid
     case Unknown
     case InternalSpeaker
     case ExternalSpeaker
@@ -88,6 +114,10 @@ enum AudioDeviceType {
     private var iconNonTemplate: NSImage {
         get {
             switch self {
+            case .Unset:
+                fatalError("Unset display names shouldn't happen")
+            case .Invalid:
+                return NSImage(named: NSImage.Name(rawValue: "StatusOutputUnknown"))!
             case .Unknown:
                 return NSImage(named: NSImage.Name(rawValue: "StatusOutputUnknown"))!
             case .InternalSpeaker:
@@ -125,6 +155,10 @@ enum AudioDeviceType {
     var displayName: String {
         get {
             switch self {
+            case .Unset:
+                fatalError("Unset display names shouldn't happen")
+            case .Invalid:
+                return "invalid device"
             case .Unknown:
                 return "unknown device"
             case .InternalSpeaker:
@@ -160,10 +194,14 @@ enum AudioDeviceType {
     }
 }
 
+enum SoundDeviceError: Error {
+    case statusFailure(OSStatus)
+}
+
 class SoundDeviceWatcher {
     private var defaultOutputDevice: AudioDeviceID = 0
 
-    private var currentDevice = AudioDeviceType.Unknown
+    private var currentDevice = AudioDeviceType.Unset
     private var watcherCallback: ((AudioDeviceType) -> ())?
 
     private let addressDefaultOutputDevice = AudioObjectPropertyAddress(
@@ -187,40 +225,56 @@ class SoundDeviceWatcher {
                                         addresses: UnsafePointer<AudioObjectPropertyAddress>) {
         removeOutputSpecificListeners()
 
-        let newOutputDevice =  numericPropertyValue(forDevice: UInt32(kAudioObjectSystemObject),
-                                                    address: addressDefaultOutputDevice)
-        NSLog("The default output device changed from \(defaultOutputDevice) to \(newOutputDevice)")
-        defaultOutputDevice = newOutputDevice
+        do {
+            let newOutputDevice =  try numericPropertyValue(forDevice: UInt32(kAudioObjectSystemObject),
+                                                            address: addressDefaultOutputDevice)
+            NSLog("The default output device changed from \(defaultOutputDevice) to \(newOutputDevice)")
+            defaultOutputDevice = newOutputDevice
 
-        addListener(deviceID: defaultOutputDevice,
-                    address: addressOutputDataSource,
-                    block: outputDataSourceDidChangeHackBlock!)
 
-        // I don't think the transport type can change for the same device, but let's watch for changes anyway.
-        addListener(deviceID: defaultOutputDevice,
-                    address: addressTransportType,
-                    block:  transportTypeDidChangeHackBlock!)
+            addListener(deviceID: defaultOutputDevice,
+                        address: addressOutputDataSource,
+                        block: outputDataSourceDidChangeHackBlock!)
+
+            // I don't think the transport type can change for the same device, but let's watch for changes anyway.
+            addListener(deviceID: defaultOutputDevice,
+                        address: addressTransportType,
+                        block:  transportTypeDidChangeHackBlock!)
+        } catch SoundDeviceError.statusFailure(let status) {
+            NSLog(
+                "Failed to get the default audio device (the last value is \(defaultOutputDevice)): " +
+                "\(format(status: status))")
+        } catch {
+            fatalError()
+        }
 
         updateAudioDeviceType()
     }
 
-    private static func format(fourCC: UInt32) -> String
-    {
-        let fourCCString = stringFrom(fourCC: fourCC)
-        return "'\(fourCCString)' (\(fourCC))"
-    }
-
     private func outputDataSourceDidChange(numberAddresses: UInt32,
                                            addresses: UnsafePointer<AudioObjectPropertyAddress>) {
-        let s = SoundDeviceWatcher.format(fourCC: dataSourceType())
-        NSLog("The data source type changed to \(s)")
+        do {
+            let s = format(fourCC: try dataSourceType())
+            NSLog("The data source type changed to \(s)")
+        } catch SoundDeviceError.statusFailure(let status) {
+            NSLog("Cannot get data source: \(format(status: status))")
+        } catch {
+            fatalError()
+        }
+
         updateAudioDeviceType()
     }
 
     private func transportTypeDidChange(numberAddresses: UInt32,
                                         addresses: UnsafePointer<AudioObjectPropertyAddress>) {
-        let s = SoundDeviceWatcher.format(fourCC: transportType())
-        NSLog("The audio transport type changed to \(s)")
+        do {
+            let s = format(fourCC: try transportType())
+            NSLog("The audio transport type changed to \(s)")
+        } catch SoundDeviceError.statusFailure(let status) {
+            NSLog("Cannot get transport type: \(format(status: status))")
+        } catch {
+            fatalError()
+        }
         updateAudioDeviceType()
     }
 
@@ -294,7 +348,16 @@ class SoundDeviceWatcher {
     }
 
     private func updateAudioDeviceType() {
-        let newType = AudioDeviceType(transportType: transportType(), dataSourceType: dataSourceType())
+        let newType: AudioDeviceType
+        do {
+            newType = AudioDeviceType(transportType: try transportType(),
+                                      dataSourceType: try dataSourceType())
+        } catch SoundDeviceError.statusFailure(let status) {
+            NSLog("Invalid transport or data source type: \(format(status: status))")
+            newType = AudioDeviceType.Invalid
+        } catch {
+            fatalError()
+        }
 
         if newType != currentDevice {
             NSLog("The current audio source changed from \(currentDevice) to \(newType)")
@@ -307,7 +370,7 @@ class SoundDeviceWatcher {
     }
 
     private func numericPropertyValue(forDevice deviceID: AudioDeviceID,
-                                      address: AudioObjectPropertyAddress) -> UInt32 {
+                                      address: AudioObjectPropertyAddress) throws -> UInt32 {
         var address = address
         var prop: UInt32 = 0
         var propSize = UInt32(MemoryLayout.size(ofValue:prop))
@@ -319,19 +382,21 @@ class SoundDeviceWatcher {
                                                 &propSize,
                                                 &prop);
         if status != noErr {
-            return 0;
+            NSLog("ERROR! Failed to get property for device \(deviceID) and address \(format(address: address)): " +
+                "\(format(status: status))")
+            throw SoundDeviceError.statusFailure(status)
         }
 
         return prop;
     }
 
-    private func dataSourceType() -> UInt32 {
-        return numericPropertyValue(forDevice: defaultOutputDevice,
-                                    address: addressOutputDataSource)
+    private func dataSourceType() throws -> UInt32 {
+        return try numericPropertyValue(forDevice: defaultOutputDevice,
+                                        address: addressOutputDataSource)
     }
 
-    private func transportType() -> UInt32 {
-        return numericPropertyValue(forDevice: defaultOutputDevice,
-                                    address: addressTransportType)
+    private func transportType() throws -> UInt32 {
+        return try numericPropertyValue(forDevice: defaultOutputDevice,
+                                        address: addressTransportType)
     }
 }

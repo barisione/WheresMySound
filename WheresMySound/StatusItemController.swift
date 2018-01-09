@@ -201,6 +201,7 @@ class StatusItemController: HelpPopoverDelegate {
         }
 
         let allTypes: [AudioDeviceType] = [
+            .Invalid,
             .Unknown,
             .InternalSpeaker,
             .ExternalSpeaker,
