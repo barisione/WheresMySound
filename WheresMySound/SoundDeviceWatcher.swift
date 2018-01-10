@@ -10,6 +10,25 @@ import Foundation
 import Cocoa
 import CoreAudio
 
+private func fourCCFrom(string: String) -> UInt32 {
+    let chars = [UInt8](string.utf8)
+
+    if chars.count != 4 {
+        return 0
+    }
+
+    var result: UInt32 = 0
+    for c in chars {
+        result = result << 8 + UInt32(c)
+    }
+
+    return result
+}
+
+private func statusFrom(string: String) -> OSStatus {
+    return OSStatus(bitPattern: fourCCFrom(string: string))
+}
+
 private func stringFrom(fourCC: UInt32) -> String {
     func charByte(at byteIndex: UInt32) -> String {
         let scalar = UnicodeScalar((fourCC >> (byteIndex * 8)) & 255)!
@@ -392,9 +411,20 @@ class SoundDeviceWatcher {
         return prop;
     }
 
+    private func numericPropertyValueIgnoringUnknown(forDevice deviceID: AudioDeviceID,
+                                                     address: AudioObjectPropertyAddress) throws -> UInt32 {
+        do {
+            return try numericPropertyValue(forDevice: deviceID,
+                                            address: address)
+        } catch SoundDeviceError.statusFailure(let status) where status == fourCCFrom(string: "who?") {
+            return 0
+        }
+    }
+
     private func dataSourceType() throws -> UInt32 {
-        return try numericPropertyValue(forDevice: defaultOutputDevice,
-                                        address: addressOutputDataSource)
+        // The data source type may be unavailable for some devices.
+        return try numericPropertyValueIgnoringUnknown(forDevice: defaultOutputDevice,
+                                                       address: addressOutputDataSource)
     }
 
     private func transportType() throws -> UInt32 {
