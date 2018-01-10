@@ -382,8 +382,10 @@ class SoundDeviceWatcher {
                                                 &propSize,
                                                 &prop);
         if status != noErr {
-            NSLog("ERROR! Failed to get property for device \(deviceID) and address \(format(address: address)): " +
-                "\(format(status: status))")
+            #if DEBUG
+                NSLog("Cannot get property for device \(deviceID) and address \(format(address: address)): " +
+                    "\(format(status: status))")
+            #endif
             throw SoundDeviceError.statusFailure(status)
         }
 
